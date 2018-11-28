@@ -1,4 +1,4 @@
-# Ávore de Prefixos (Trie Tree)
+# Árvore de Prefixos (Trie Tree)
 
 - Rodar no Netbeans
 
