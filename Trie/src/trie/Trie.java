@@ -20,7 +20,7 @@ public class Trie {
     
     public void insert(String word) {
         
-        if(search(word)) {
+        if(searchHelp(word)) {
             System.out.println("already inserted");
         } else {
             int character, index;
@@ -35,7 +35,7 @@ public class Trie {
                 pNode = pNode.next[index];
             }
             pNode.terminal = true;
-            System.out.println("word inserted");
+            System.out.println("word inserted -> " + word);
         }
     }
     
@@ -85,16 +85,16 @@ public class Trie {
     }
     
     public void delete(String word) {
-        if(!search(word)) {
-            System.out.println("word does not exist");
+        if(!searchHelp(word)) {
+            System.out.println("word does not exist -> " + word);
         } else {
             delete(root, word, 0);
-            System.out.println("word deleted");
+            System.out.println("word deleted -> " + word);
         }
     }
     
     
-    public boolean search(String word) {
+    private boolean searchHelp(String word) {
         int character, index;
         Node pNode = root;
         
@@ -108,6 +108,14 @@ public class Trie {
         return ((pNode != null) && pNode.terminal);
     }
     
+    public void search(String word) {
+        if(searchHelp(word)) {
+            System.out.println("word found -> " + word);
+        } else {
+            System.out.println("word not found -> " + word);
+        }
+    }
+    
  
     /**
      * @param args the command line arguments
@@ -116,50 +124,25 @@ public class Trie {
        
         Trie tree = new Trie();
         
-        Scanner rOption = new Scanner(System.in);
-        Scanner rWord = new Scanner(System.in);
-        int option;
-        do {
-            System.out.println("\n-------------");
-            System.out.println("1 - insert");
-            System.out.println("2 - delete");
-            System.out.println("3 - search");
-            System.out.println("0 - exit");
-            System.out.println("-------------\n");
-            
-            System.out.print("option: ");
-            option = rOption.nextInt();
-            String word;
-            switch (option) {
-                case 0:
-                    option = 0;
-                    System.out.println("finish program");
-                    break;
-                case 1:
-                    System.out.print("insert the word: ");
-                    word = rWord.nextLine();
-                    tree.insert(word);
-                    break;
-                case 2:
-                    System.out.print("delete the word: ");
-                    word = rWord.nextLine();
-                    tree.delete(word);
-                break;
-                case 3:
-                    System.out.print("search the word: ");
-                    word = rWord.nextLine();
-                    if (tree.search(word)) {
-                        System.out.println("word found");
-                    } else {
-                        System.out.println("word not found");
-                    }
-                    break;
-                default:
-                    System.out.println("invalid option");
-                    break;
-            }
-            
-        } while (option != 0);
+        tree.insert("alto");
+        tree.insert("alteza");
+        tree.insert("amor");
+        tree.insert("amorteceu");
+        tree.insert("cola");
+        tree.insert("galinha");
+        tree.insert("galo");
+        
+        tree.search("meta");
+        tree.search("amor");
+        tree.search("alteza");
+        
+        tree.delete("arroz");
+        tree.delete("amor");
+        tree.delete("cola");
+        tree.search("amorteceu");
+        
+        
+        
 
     }
         
