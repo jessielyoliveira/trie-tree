@@ -1,4 +1,12 @@
-# Árvore de Prefixos (Trie Tree)
+# Trie Tree
+Usando a IDE Netbeans
 
-- Rodar no Netbeans
+### Métodos implementados:
+* Inserção
+* Remoção
+* Busca
+
+   
+
+
 
